@@ -122,7 +122,7 @@ enum CellState {
 */
 // A struct representing a Cell in Conway's Game of Life
 struct Cell {
-    var position = (0, 0)
+    var position = Position(row: 0, col: 0)
     var state  = CellState.empty
 }
 /*:
