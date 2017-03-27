@@ -44,6 +44,7 @@ import UIKit
             height: rect.size.height / rectSize
         )
         
+        // fill in the circles
         let base = rect.origin
         (0 ..< self.size).forEach { i in
             (0 ..< self.size).forEach { j in
@@ -72,7 +73,7 @@ import UIKit
             }
         }
 
-        //create the path
+        //create the grid
         (0 ... self.size).forEach {
             drawLine(
                 start: CGPoint(x: CGFloat($0)/rectSize * rect.size.width, y: 0.0),
