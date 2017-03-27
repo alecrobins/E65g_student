@@ -44,6 +44,7 @@ import UIKit
             width: rect.size.width / rectSize,
             height: rect.size.height / rectSize
         )
+        
         let base = rect.origin
         (0 ..< self.size).forEach { i in
             (0 ..< self.size).forEach { j in
@@ -71,50 +72,76 @@ import UIKit
                 path.fill()
             }
         }
-        
+
         //create the path
-        let verticalPath = UIBezierPath()
-        var start = CGPoint(
-            x: rect.origin.x + rect.size.width / 2.0,
-            y: rect.origin.y
-        )
-        var end = CGPoint(
-            x: rect.origin.x + rect.size.width / 2.0,
-            y: rect.origin.y + rect.size.height
-        )
+        (0 ... self.size).forEach {
+            drawLine(
+                start: CGPoint(x: CGFloat($0)/rectSize * rect.size.width, y: 0.0),
+                end:   CGPoint(x: CGFloat($0)/rectSize * rect.size.width, y: rect.size.height)
+            )
+            
+            drawLine(
+                start: CGPoint(x: 0.0, y: CGFloat($0)/rectSize * rect.size.height ),
+                end: CGPoint(x: rect.size.width, y: CGFloat($0)/rectSize * rect.size.height)
+            )
+        }
+    }
+    
+    func drawLine(start:CGPoint, end: CGPoint) {
+        let path = UIBezierPath()
         
         //set the path's line width to the height of the stroke
-        verticalPath.lineWidth = self.gridWidth
+        path.lineWidth = self.gridWidth
         
         //move the initial point of the path
         //to the start of the horizontal stroke
-        verticalPath.move(to: start)
+        path.move(to: start)
         
         //add a point to the path at the end of the stroke
-        verticalPath.addLine(to: end)
+        path.addLine(to: end)
         
         //draw the stroke
-        UIColor.cyan.setStroke()
-        verticalPath.stroke()
-        
-        let horizontalPath = UIBezierPath()
-        start = CGPoint(
-            x: rect.origin.x,
-            y: rect.origin.y + rect.size.height / 2.0
-        )
-        end = CGPoint(
-            x: rect.origin.x + rect.size.width,
-            y: rect.origin.y + rect.size.height / 2.0
-        )
-        //move the initial point of the path
-        //to the start of the horizontal stroke
-        horizontalPath.move(to: start)
-        
-        //add a point to the path at the end of the stroke
-        horizontalPath.addLine(to: end)
-        horizontalPath.lineWidth = self.gridWidth
-        UIColor.green.setStroke()
-        horizontalPath.stroke()
+        self.gridColor.setStroke()
+        path.stroke()
     }
+    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        lastTouchedPosition = process(touches: touches)
+//    }
+//    
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        lastTouchedPosition = process(touches: touches)
+//    }
+//    
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        lastTouchedPosition = nil
+//    }
+//    
+//    // Updated since class
+//    typealias Position = (row: Int, col: Int)
+//    var lastTouchedPosition: Position?
+//    
+//    func process(touches: Set<UITouch>) -> Position? {
+//        guard touches.count == 1 else { return nil }
+//        let pos = convert(touch: touches.first!)
+//        guard lastTouchedPosition?.row != pos.row
+//            || lastTouchedPosition?.col != pos.col
+//            else { return pos }
+//        
+//        grid[(pos.row, pos.col)] = grid[(pos.row, pos.col)] ? false : true
+//        setNeedsDisplay()
+//        return pos
+//    }
+//    
+//    func convert(touch: UITouch) -> Position {
+//        let touchY = touch.location(in: self).y
+//        let gridHeight = frame.size.height
+//        let row = touchY / gridHeight * CGFloat(3)
+//        let touchX = touch.location(in: self).x
+//        let gridWidth = frame.size.width
+//        let col = touchX / gridWidth * CGFloat(3)
+//        let position = (row: Int(row), col: Int(col))
+//        return position
+//    }
 
 }
