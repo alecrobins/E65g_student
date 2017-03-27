@@ -26,7 +26,7 @@
                                 <rect key="frame" x="36" y="182" width="303" height="303"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="cTe-Lg-UlZ" secondAttribute="height" multiplier="1:1" id="kyd-d1-iAt"/>
+                                    <constraint firstAttribute="width" secondItem="cTe-Lg-UlZ" secondAttribute="height" multiplier="1:1" id="G2I-GJ-Qss"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="size">
@@ -49,14 +49,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGZ-y9-4XO">
+                                <rect key="frame" x="36" y="144" width="32" height="30"/>
+                                <state key="normal" title="Step"/>
+                                <connections>
+                                    <action selector="stepButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F62-AP-u5x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cTe-Lg-UlZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="32G-bk-s3c"/>
-                            <constraint firstItem="cTe-Lg-UlZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eOB-X1-U7Z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cTe-Lg-UlZ" secondAttribute="trailing" constant="20" id="lJ9-VF-mXr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cTe-Lg-UlZ" secondAttribute="trailing" constant="20" id="hFu-0h-JFB"/>
+                            <constraint firstItem="cTe-Lg-UlZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="m9P-ca-309"/>
+                            <constraint firstItem="cTe-Lg-UlZ" firstAttribute="top" secondItem="oGZ-y9-4XO" secondAttribute="bottom" constant="8" id="pGx-3R-ZmX"/>
+                            <constraint firstItem="cTe-Lg-UlZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tMh-LE-aQJ"/>
+                            <constraint firstItem="cTe-Lg-UlZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ur8-dc-aMm"/>
+                            <constraint firstItem="oGZ-y9-4XO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="y8R-UX-dx3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gridView" destination="cTe-Lg-UlZ" id="yW8-vP-nwd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

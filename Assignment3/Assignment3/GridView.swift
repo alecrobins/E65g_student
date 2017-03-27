@@ -17,7 +17,7 @@ import UIKit
     @IBInspectable var diedColor = UIColor.red
     @IBInspectable var gridColor = UIColor.black
     @IBInspectable var gridWidth: CGFloat = 2.0
-    private var grid: Grid
+    var grid: Grid
     
     // Updated since class
     private var lastTouchedPosition: Position?
@@ -35,10 +35,6 @@ import UIKit
     override func draw(_ rect: CGRect) {
         drawRectangle(rect)
     }
-    
-    //4. implement a drawRect: method for GridView which: (40 points)
-    //•	draws the correct set of grid lines in the view using the techniques shown in class.  Set the gridlines to have width as specified in the gridWidth property and color as in gridColor
-    //•	draws a circle inside of every grid cell and fills the circle with the appropriate color for the grid cell drawn from the Grid struct discussed in Problem 2.  e.g. for grid cell (0,0) fetch the zero'th array from grid and then fetch the CellState value from the zero'th position of the array and color the circle using the color specified in IB. Repeat for the other values
     
     func drawRectangle(_ rect: CGRect) {
         let rectSize = CGFloat(self.size)
@@ -107,8 +103,6 @@ import UIKit
         self.gridColor.setStroke()
         path.stroke()
     }
-    
-//    5. Using touch handling techniques shown in class  and  the toggle method of CellState, toggle the value of a  touched cell from Empty to Living or from Living to Empty depending the current state of the cell and cause a redisplay to happen (20 points)
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         lastTouchedPosition = process(touches: touches)
