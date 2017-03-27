@@ -20,12 +20,13 @@ import UIKit
     var grid: Grid
     
     override init(frame: CGRect) {
-        self.grid = Grid(size, size) { _,_ in CellState.empty }
-        super.init(frame: frame);
+        grid = Grid(size, size) { _,_ in CellState.empty }
+        super.init(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        grid = Grid(size, size) { _,_ in CellState.empty }
+        super.init(coder: aDecoder)
     }
     
     override func draw(_ rect: CGRect) {
@@ -50,15 +51,24 @@ import UIKit
                     x: base.x + (CGFloat(i) * size.width),
                     y: base.y + (CGFloat(j) * size.height)
                 )
+                
                 let subRect = CGRect(
                     origin: origin,
                     size: size
                 )
-                if arc4random_uniform(2) == 1 {
-                    let path = UIBezierPath(ovalIn: subRect)
-                    livingColor.setFill()
-                    path.fill()
+                
+                var fillColor: UIColor
+                
+                switch self.grid[(i, j)] {
+                case .alive: fillColor = self.livingColor
+                case .born: fillColor = self.bornColor
+                case .died: fillColor = self.diedColor
+                case .empty: fillColor = self.emptyColor
                 }
+                
+                let path = UIBezierPath(ovalIn: subRect)
+                fillColor.setFill()
+                path.fill()
             }
         }
         
