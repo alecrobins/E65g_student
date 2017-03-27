@@ -17,17 +17,35 @@ import UIKit
     @IBInspectable var diedColor = UIColor.red
     @IBInspectable var gridColor = UIColor.black
     @IBInspectable var gridWidth: CGFloat = 2.0
-//    var grid: Grid
-//    grid = Grid(size, size) { _,_ in CellState.empty }
+    var grid: Grid
+    
+    override init(frame: CGRect) {
+        self.grid = Grid(size, size) { _,_ in CellState.empty }
+        super.init(frame: frame);
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func draw(_ rect: CGRect) {
+        drawRectangle(rect)
+    }
+    
+    //4. implement a drawRect: method for GridView which: (40 points)
+    //•	draws the correct set of grid lines in the view using the techniques shown in class.  Set the gridlines to have width as specified in the gridWidth property and color as in gridColor
+    //•	draws a circle inside of every grid cell and fills the circle with the appropriate color for the grid cell drawn from the Grid struct discussed in Problem 2.  e.g. for grid cell (0,0) fetch the zero'th array from grid and then fetch the CellState value from the zero'th position of the array and color the circle using the color specified in IB. Repeat for the other values
+    
+    func drawRectangle(_ rect: CGRect) {
+        let rectSize = CGFloat(self.size)
+        
         let size = CGSize(
-            width: rect.size.width / 3.0,
-            height: rect.size.height / 3.0
+            width: rect.size.width / rectSize,
+            height: rect.size.height / rectSize
         )
         let base = rect.origin
-        (0 ..< 3).forEach { i in
-            (0 ..< 3).forEach { j in
+        (0 ..< self.size).forEach { i in
+            (0 ..< self.size).forEach { j in
                 let origin = CGPoint(
                     x: base.x + (CGFloat(i) * size.width),
                     y: base.y + (CGFloat(j) * size.height)
@@ -43,7 +61,6 @@ import UIKit
                 }
             }
         }
-        let lineWidth: CGFloat = 8.0
         
         //create the path
         let verticalPath = UIBezierPath()
@@ -57,7 +74,7 @@ import UIKit
         )
         
         //set the path's line width to the height of the stroke
-        verticalPath.lineWidth = lineWidth
+        verticalPath.lineWidth = self.gridWidth
         
         //move the initial point of the path
         //to the start of the horizontal stroke
@@ -85,7 +102,7 @@ import UIKit
         
         //add a point to the path at the end of the stroke
         horizontalPath.addLine(to: end)
-        horizontalPath.lineWidth = lineWidth
+        horizontalPath.lineWidth = self.gridWidth
         UIColor.green.setStroke()
         horizontalPath.stroke()
     }
