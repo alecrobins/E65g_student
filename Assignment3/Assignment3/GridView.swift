@@ -124,12 +124,8 @@ import UIKit
             || lastTouchedPosition?.col != pos.col
             else { return pos }
         
-        switch grid[(pos.row, pos.col)] {
-        case .alive, .born:
-            grid[(pos.row, pos.col)] = .empty
-        case .died, .empty:
-            grid[(pos.row, pos.col)] = .alive
-        }
+        let cellValue = grid[(pos.row, pos.col)]
+        grid[(pos.row, pos.col)] = cellValue.toggle(value: cellValue)
         
         setNeedsDisplay()
         return pos
