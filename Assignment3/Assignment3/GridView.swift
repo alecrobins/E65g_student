@@ -17,7 +17,10 @@ import UIKit
     @IBInspectable var diedColor = UIColor.red
     @IBInspectable var gridColor = UIColor.black
     @IBInspectable var gridWidth: CGFloat = 2.0
-    var grid: Grid
+    private var grid: Grid
+    
+    // Updated since class
+    private var lastTouchedPosition: Position?
     
     override init(frame: CGRect) {
         grid = Grid(size, size) { _,_ in CellState.empty }
@@ -105,43 +108,48 @@ import UIKit
         path.stroke()
     }
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        lastTouchedPosition = process(touches: touches)
-//    }
-//    
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        lastTouchedPosition = process(touches: touches)
-//    }
-//    
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        lastTouchedPosition = nil
-//    }
-//    
-//    // Updated since class
-//    typealias Position = (row: Int, col: Int)
-//    var lastTouchedPosition: Position?
-//    
-//    func process(touches: Set<UITouch>) -> Position? {
-//        guard touches.count == 1 else { return nil }
-//        let pos = convert(touch: touches.first!)
-//        guard lastTouchedPosition?.row != pos.row
-//            || lastTouchedPosition?.col != pos.col
-//            else { return pos }
-//        
-//        grid[(pos.row, pos.col)] = grid[(pos.row, pos.col)] ? false : true
-//        setNeedsDisplay()
-//        return pos
-//    }
-//    
-//    func convert(touch: UITouch) -> Position {
-//        let touchY = touch.location(in: self).y
-//        let gridHeight = frame.size.height
-//        let row = touchY / gridHeight * CGFloat(3)
-//        let touchX = touch.location(in: self).x
-//        let gridWidth = frame.size.width
-//        let col = touchX / gridWidth * CGFloat(3)
-//        let position = (row: Int(row), col: Int(col))
-//        return position
-//    }
+//    5. Using touch handling techniques shown in class  and  the toggle method of CellState, toggle the value of a  touched cell from Empty to Living or from Living to Empty depending the current state of the cell and cause a redisplay to happen (20 points)
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        lastTouchedPosition = process(touches: touches)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        lastTouchedPosition = process(touches: touches)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        lastTouchedPosition = nil
+    }
+    
+    func process(touches: Set<UITouch>) -> Position? {
+        guard touches.count == 1 else { return nil }
+        let pos = convert(touch: touches.first!)
+        guard lastTouchedPosition?.row != pos.row
+            || lastTouchedPosition?.col != pos.col
+            else { return pos }
+        
+        switch grid[(pos.row, pos.col)] {
+        case .alive, .born:
+            grid[(pos.row, pos.col)] = .empty
+        case .died, .empty:
+            grid[(pos.row, pos.col)] = .alive
+        }
+        
+        setNeedsDisplay()
+        return pos
+    }
+    
+    func convert(touch: UITouch) -> Position {
+        let touchX = touch.location(in: self).x
+        let gridWidth = frame.size.width
+        let row = touchX / gridWidth * CGFloat(self.size)
+        
+        let touchY = touch.location(in: self).y
+        let gridHeight = frame.size.height
+        let col = touchY / gridHeight * CGFloat(self.size)
+        
+        return Position(row: Int(row), col: Int(col))
+    }
 
 }
