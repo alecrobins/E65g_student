@@ -8,16 +8,25 @@
 
 import UIKit
 
-class SimulationViewController: UIViewController {
+class SimulationViewController: UIViewController, EngineDelegate {
 
+    @IBOutlet weak var gridView: GridView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        StandardEngine.sharedEngine.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func step(_ sender: UIButton) {
+        StandardEngine.sharedEngine.next()
+    }
+    
+    func engineDidUpdate(withGrid: GridProtocol) {
+        gridView.setNeedsDisplay()
     }
 
 

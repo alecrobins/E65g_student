@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		847656271EA0677B0039F96F /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847656261EA0677B0039F96F /* GridView.swift */; };
+		847656291EA06AF60039F96F /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847656281EA06AF60039F96F /* Engine.swift */; };
 		84D1FBE71E9F03BE00FE4086 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1FBE61E9F03BE00FE4086 /* StatisticsViewController.swift */; };
 		FB475A381E8828EF00D2EAD3 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475A371E8828EF00D2EAD3 /* Grid.swift */; };
 		FBAD2E071E2BE38C008207C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAD2E061E2BE38C008207C0 /* AppDelegate.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		847656261EA0677B0039F96F /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		847656281EA06AF60039F96F /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		84D1FBE61E9F03BE00FE4086 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		FB475A371E8828EF00D2EAD3 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		FBAD2E031E2BE38C008207C0 /* Assignment4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment4.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,14 +65,16 @@
 			isa = PBXGroup;
 			children = (
 				FB475A371E8828EF00D2EAD3 /* Grid.swift */,
-				FBAD2E061E2BE38C008207C0 /* AppDelegate.swift */,
+				847656281EA06AF60039F96F /* Engine.swift */,
 				FBAD2E081E2BE38C008207C0 /* Instrumentation ViewController.swift */,
 				FBAD2E0A1E2BE38C008207C0 /* SimulationViewController.swift */,
-				FBAD2E0C1E2BE38C008207C0 /* Main.storyboard */,
-				FBAD2E0F1E2BE38C008207C0 /* Assets.xcassets */,
-				FBAD2E111E2BE38C008207C0 /* LaunchScreen.storyboard */,
-				FBAD2E141E2BE38C008207C0 /* Info.plist */,
 				84D1FBE61E9F03BE00FE4086 /* StatisticsViewController.swift */,
+				847656261EA0677B0039F96F /* GridView.swift */,
+				FBAD2E0C1E2BE38C008207C0 /* Main.storyboard */,
+				FBAD2E111E2BE38C008207C0 /* LaunchScreen.storyboard */,
+				FBAD2E061E2BE38C008207C0 /* AppDelegate.swift */,
+				FBAD2E0F1E2BE38C008207C0 /* Assets.xcassets */,
+				FBAD2E141E2BE38C008207C0 /* Info.plist */,
 			);
 			path = Assignment4;
 			sourceTree = "<group>";
@@ -150,7 +156,9 @@
 				84D1FBE71E9F03BE00FE4086 /* StatisticsViewController.swift in Sources */,
 				FBAD2E071E2BE38C008207C0 /* AppDelegate.swift in Sources */,
 				FBAD2E091E2BE38C008207C0 /* Instrumentation ViewController.swift in Sources */,
+				847656271EA0677B0039F96F /* GridView.swift in Sources */,
 				FB475A381E8828EF00D2EAD3 /* Grid.swift in Sources */,
+				847656291EA06AF60039F96F /* Engine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
