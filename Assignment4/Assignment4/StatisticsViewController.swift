@@ -21,15 +21,17 @@ class StatisticsViewController: UIViewController {
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "EngineUpdate")
         nc.addObserver(forName: name, object: nil, queue: nil) {(n) in
-            self.updateLabels()
+            self.setLabels()
         }
+        
+        self.setLabels()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func updateLabels() {
+    func setLabels() {
         var aliveCount = 0
         var deadCount = 0
         var bornCount = 0

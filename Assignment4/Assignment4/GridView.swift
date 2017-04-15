@@ -109,6 +109,12 @@ import UIKit
     
     func process(touches: Set<UITouch>) -> GridPosition? {
         guard touches.count == 1 else { return nil }
+        
+        let touchY = touches.first!.location(in: self).y
+        let touchX = touches.first!.location(in: self).x
+        guard touchX > 0 && touchX < frame.size.width else { return nil }
+        guard touchY > 0 && touchY < frame.size.height else { return nil }
+        
         let pos = convert(touch: touches.first!)
         guard lastTouchedPosition?.row != pos.row
             || lastTouchedPosition?.col != pos.col

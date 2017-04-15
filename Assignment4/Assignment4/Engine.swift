@@ -28,7 +28,11 @@ public class StandardEngine: EngineProtocol {
     static let sharedEngine = StandardEngine(10, 10)
     
     public var delegate: EngineDelegate?
-    public var grid: GridProtocol
+    public var grid: GridProtocol {
+        didSet {
+            sendUpdate()
+        }
+    }
     public var refreshRate: Double = 0.0
     public var refreshTimer: Timer = Timer.init()
     public var rows: Int
@@ -50,7 +54,6 @@ public class StandardEngine: EngineProtocol {
     
     public func next() -> GridProtocol {
         grid = grid.next()
-        sendUpdate()
         return grid
     }
 }

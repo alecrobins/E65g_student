@@ -28,7 +28,5 @@ class SimulationViewController: UIViewController, EngineDelegate {
     func engineDidUpdate(withGrid: GridProtocol) {
         gridView.setNeedsDisplay()
     }
-
-
 }
 
