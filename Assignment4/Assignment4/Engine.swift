@@ -25,31 +25,19 @@ public protocol EngineProtocol {
 
 
 public class StandardEngine: EngineProtocol {
-    static let sharedEngine = StandardEngine()
+    static let sharedEngine = StandardEngine(10, 10)
     
     public var delegate: EngineDelegate?
     public var grid: GridProtocol
     public var refreshRate: Double = 0.0
     public var refreshTimer: Timer = Timer.init()
-    public var rows: Int = 10 {
-        didSet {
-            createGrid()
-        }
-    }
+    public var rows: Int
+    public var cols: Int
     
-    public var cols: Int = 10 {
-        didSet {
-            createGrid()
-        }
-    }
-    
-    private init() {
+    private init(_ rows: Int, _ cols: Int) {
         self.grid = Grid(rows, cols)
-    }
-    
-    private func createGrid() {
-        grid = Grid(rows, cols)
-        sendUpdate()
+        self.rows = rows
+        self.cols = cols
     }
     
     private func sendUpdate() {
