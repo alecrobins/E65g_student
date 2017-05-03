@@ -63,7 +63,7 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func refreshRateSliderValueChange(_ sender: UISlider) {
-        timerInterval = TimeInterval(sender.value / 100.0)
+        timerInterval = TimeInterval(1 / sender.value)
     }
 
     @IBAction func rowsStepperStep(_ sender: UIStepper) {
