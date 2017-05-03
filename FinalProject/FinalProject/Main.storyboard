@@ -23,23 +23,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRV-wZ-MAJ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRV-wZ-MAJ">
                                 <rect key="frame" x="16" y="57" width="241" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="rowsTextFieldDidEnd:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="OqE-yR-lcx"/>
+                                </connections>
                             </textField>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-UU-ICO">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-UU-ICO">
                                 <rect key="frame" x="265" y="57" width="94" height="29"/>
+                                <connections>
+                                    <action selector="rowsStepperStep:" destination="9pv-A4-QxB" eventType="valueChanged" id="ZnL-gZ-0Nt"/>
+                                </connections>
                             </stepper>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kmJ-5H-GPv">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kmJ-5H-GPv">
                                 <rect key="frame" x="16" y="141" width="241" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="colsTextFieldDidEnd:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="oBH-xq-tGv"/>
+                                </connections>
                             </textField>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="B5z-IY-izc">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="B5z-IY-izc">
                                 <rect key="frame" x="265" y="141" width="94" height="29"/>
+                                <connections>
+                                    <action selector="colsStepperStep:" destination="9pv-A4-QxB" eventType="valueChanged" id="Mpr-Pk-ZJX"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lK-pw-qtL">
                                 <rect key="frame" x="16" y="28" width="41" height="21"/>
@@ -100,6 +112,14 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Waning Gibbous" selectedImage="Waning Gibbous" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="colsStepper" destination="B5z-IY-izc" id="Hvq-xN-8Ur"/>
+                        <outlet property="colsTextField" destination="kmJ-5H-GPv" id="xDL-dn-P0Y"/>
+                        <outlet property="refreshRateSlider" destination="jIP-o2-igd" id="Ce8-Ik-rHl"/>
+                        <outlet property="rowTextField" destination="HRV-wZ-MAJ" id="i32-Lh-cng"/>
+                        <outlet property="rowsStepper" destination="Cjl-UU-ICO" id="ULf-T8-s8w"/>
+                        <outlet property="timedRefreshSwitch" destination="dr8-Db-Hxh" id="bde-7a-kLh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
