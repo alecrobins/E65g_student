@@ -7,6 +7,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -210,10 +211,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kJ-kI-DQZ" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
-                                <rect key="frame" x="16" y="162" width="343" height="343"/>
+                                <rect key="frame" x="37" y="183" width="301" height="301"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="7kJ-kI-DQZ" secondAttribute="height" multiplier="1:1" id="5Sx-1I-Lh2"/>
+                                    <constraint firstAttribute="width" secondItem="7kJ-kI-DQZ" secondAttribute="height" multiplier="1:1" priority="500" id="7Jc-I3-kR4"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
@@ -234,7 +235,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XnZ-0M-vGs">
-                                <rect key="frame" x="16" y="124" width="32" height="30"/>
+                                <rect key="frame" x="37" y="145" width="32" height="30"/>
                                 <state key="normal" title="Step"/>
                                 <connections>
                                     <action selector="step:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="EIr-xq-KAz"/>
@@ -243,11 +244,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.78823529411764703" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="7EC-Zi-aMG"/>
-                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="top" secondItem="XnZ-0M-vGs" secondAttribute="bottom" constant="8" id="AKH-KB-vNw"/>
-                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="txm-qd-mbe"/>
-                            <constraint firstItem="XnZ-0M-vGs" firstAttribute="leading" secondItem="7kJ-kI-DQZ" secondAttribute="leading" id="v7V-oj-lVk"/>
-                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="z4V-jW-qRW"/>
+                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="height" relation="lessThanOrEqual" secondItem="QS5-Rx-YEW" secondAttribute="height" multiplier="0.6" priority="500" constant="0.5" id="AJe-vH-dcz"/>
+                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="width" relation="lessThanOrEqual" secondItem="QS5-Rx-YEW" secondAttribute="width" multiplier="0.8" priority="500" constant="0.80000000000000004" id="ExQ-2P-Kxk"/>
+                            <constraint firstItem="XnZ-0M-vGs" firstAttribute="leading" secondItem="7kJ-kI-DQZ" secondAttribute="leading" id="V2a-vL-SE0"/>
+                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" multiplier="0.8" priority="500" constant="0.80000000000000004" id="WYz-kp-yxR"/>
+                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="height" secondItem="QS5-Rx-YEW" secondAttribute="height" multiplier="0.6" priority="100" constant="0.5" id="WmO-pN-mdh"/>
+                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="XZs-Vb-66m"/>
+                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="hWW-ad-Ws8"/>
+                            <constraint firstItem="7kJ-kI-DQZ" firstAttribute="top" secondItem="XnZ-0M-vGs" secondAttribute="bottom" constant="8" id="r0V-qb-512"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Simulation" image="Play" id="cPa-gy-q4n"/>
