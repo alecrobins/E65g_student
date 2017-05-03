@@ -24,14 +24,15 @@ class InstrumentationViewController: UIViewController {
     var timerInterval: TimeInterval = 0.0 {
         didSet {
             StandardEngine.sharedEngine.refreshTimer?.invalidate()
-            StandardEngine.sharedEngine.refreshTimer = nil
             
             StandardEngine.sharedEngine.refreshTimer =
                 Timer.scheduledTimer(
                 withTimeInterval: timerInterval,
                 repeats: true
             ) { (t: Timer) in
-                StandardEngine.sharedEngine.next()
+                if (self.timedRefreshSwitch.isOn) {
+                    StandardEngine.sharedEngine.next()    
+                }
             }
             
         }
@@ -48,10 +49,6 @@ class InstrumentationViewController: UIViewController {
         rowsStepper.value = Double(rows)
         colsStepper.value = Double(cols)
     }
-    
-    @IBAction func refreshRateSliderValueChange(_ sender: UISlider) {
-        timerInterval = TimeInterval(sender.value / 100.0)
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -63,6 +60,10 @@ class InstrumentationViewController: UIViewController {
             StandardEngine.sharedEngine.rows,
             StandardEngine.sharedEngine.cols
         )
+    }
+    
+    @IBAction func refreshRateSliderValueChange(_ sender: UISlider) {
+        timerInterval = TimeInterval(sender.value / 100.0)
     }
 
     @IBAction func rowsStepperStep(_ sender: UIStepper) {
