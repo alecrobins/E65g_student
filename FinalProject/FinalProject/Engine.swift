@@ -17,10 +17,10 @@ public protocol EngineProtocol {
     var delegate: EngineDelegate? { get }
     var grid: GridProtocol { get }
     var refreshRate: Double { get set }
-    var refreshTimer: Timer { get set }
+    var refreshTimer: Timer? { get set }
     var rows: Int { get set }
     var cols: Int { get set }
-    func next() -> GridProtocol
+    func next() -> Void
 }
 
 
@@ -34,7 +34,7 @@ public class StandardEngine: EngineProtocol {
         }
     }
     public var refreshRate: Double = 0.0
-    public var refreshTimer: Timer = Timer.init()
+    public var refreshTimer: Timer?
     public var rows: Int
     public var cols: Int
     
@@ -52,8 +52,7 @@ public class StandardEngine: EngineProtocol {
         nc.post(n)
     }
     
-    public func next() -> GridProtocol {
+    public func next() {
         grid = grid.next()
-        return grid
     }
 }

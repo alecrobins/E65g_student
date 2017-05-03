@@ -22,7 +22,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
     
     @IBAction func step(_ sender: UIButton) {
-        StandardEngine.sharedEngine.next()
+        // Need to stop timer
     }
     
     func engineDidUpdate(withGrid: GridProtocol) {

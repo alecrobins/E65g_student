@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 10.0, *)
 class InstrumentationViewController: UIViewController {
 
     @IBOutlet weak var rowsStepper: UIStepper!
@@ -20,6 +21,22 @@ class InstrumentationViewController: UIViewController {
     
     @IBOutlet weak var timedRefreshSwitch: UISwitch!
     
+    var timerInterval: TimeInterval = 0.0 {
+        didSet {
+            StandardEngine.sharedEngine.refreshTimer?.invalidate()
+            StandardEngine.sharedEngine.refreshTimer = nil
+            
+            StandardEngine.sharedEngine.refreshTimer =
+                Timer.scheduledTimer(
+                withTimeInterval: timerInterval,
+                repeats: true
+            ) { (t: Timer) in
+                StandardEngine.sharedEngine.next()
+            }
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let rows = StandardEngine.sharedEngine.rows
@@ -30,6 +47,10 @@ class InstrumentationViewController: UIViewController {
         
         rowsStepper.value = Double(rows)
         colsStepper.value = Double(cols)
+    }
+    
+    @IBAction func refreshRateSliderValueChange(_ sender: UISlider) {
+        timerInterval = TimeInterval(sender.value / 100.0)
     }
 
     override func didReceiveMemoryWarning() {

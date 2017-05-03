@@ -67,6 +67,10 @@
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="jIP-o2-igd">
                                 <rect key="frame" x="14" y="232" width="347" height="31"/>
+                                <connections>
+                                    <action selector="refreshRateSliderDidEnd:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="1NF-4K-HQ1"/>
+                                    <action selector="refreshRateSliderValueChange:" destination="9pv-A4-QxB" eventType="valueChanged" id="MKM-F7-d6U"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refresh Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iw9-lq-ZDr">
                                 <rect key="frame" x="138" y="203" width="99" height="21"/>
