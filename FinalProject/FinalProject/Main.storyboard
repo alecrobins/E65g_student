@@ -295,10 +295,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Statistics" image="Heat Map" id="PjV-lt-TXa"/>
                     <connections>
-                        <outlet property="aliveCount" destination="bVL-Ky-CJj" id="Nux-7k-Vya"/>
-                        <outlet property="bornCount" destination="faO-uA-2Gs" id="Urs-iY-2hs"/>
-                        <outlet property="deadCount" destination="v9x-tM-y8I" id="ai0-mG-9a9"/>
-                        <outlet property="emptyCount" destination="qe8-jn-IMe" id="WS8-Ta-RxO"/>
+                        <outlet property="aliveCountLabel" destination="bVL-Ky-CJj" id="lmm-qO-XiE"/>
+                        <outlet property="bornCountLabel" destination="faO-uA-2Gs" id="rWJ-XB-fcb"/>
+                        <outlet property="deadCountLabel" destination="v9x-tM-y8I" id="hZF-GO-S6l"/>
+                        <outlet property="emptyCountLabel" destination="qe8-jn-IMe" id="Iej-xN-nHY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6c-bQ-D2a" userLabel="First Responder" sceneMemberID="firstResponder"/>

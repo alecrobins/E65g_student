@@ -10,11 +10,12 @@ import UIKit
 
 class StatisticsViewController: UIViewController {
     
-    @IBOutlet weak var aliveCount: UILabel!
-    @IBOutlet weak var deadCount: UILabel!
-    @IBOutlet weak var bornCount: UILabel!
-    @IBOutlet weak var emptyCount: UILabel!
     
+    @IBOutlet weak var aliveCountLabel: UILabel!
+    @IBOutlet weak var deadCountLabel: UILabel!
+    @IBOutlet weak var bornCountLabel: UILabel!
+    @IBOutlet weak var emptyCountLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,14 +61,14 @@ class StatisticsViewController: UIViewController {
             }
         }
         
-        self.aliveCount.text = String(aliveCount)
-        self.deadCount.text = String(deadCount)
-        self.bornCount.text = String(bornCount)
-        self.emptyCount.text = String(emptyCount)
+        self.aliveCountLabel.text = String(aliveCount)
+        self.deadCountLabel.text = String(deadCount)
+        self.bornCountLabel.text = String(bornCount)
+        self.emptyCountLabel.text = String(emptyCount)
         
-        self.aliveCount.setNeedsDisplay()
-        self.deadCount.setNeedsDisplay()
-        self.bornCount.setNeedsDisplay()
-        self.emptyCount.setNeedsDisplay()
+        self.aliveCountLabel.setNeedsDisplay()
+        self.deadCountLabel.setNeedsDisplay()
+        self.bornCountLabel.setNeedsDisplay()
+        self.emptyCountLabel.setNeedsDisplay()
     }
 }

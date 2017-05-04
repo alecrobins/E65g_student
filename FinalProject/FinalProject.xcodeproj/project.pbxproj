@@ -81,8 +81,8 @@
 				841C63841EB95BF6003C8910 /* StatisticsViewController.swift */,
 				FBAD2E261E2BE417008207C0 /* AppDelegate.swift */,
 				841C63791EB95B93003C8910 /* Main.storyboard */,
-				841C637B1EB95BBC003C8910 /* Assets.xcassets */,
 				841C637D1EB95BCD003C8910 /* LaunchScreen.storyboard */,
+				841C637B1EB95BBC003C8910 /* Assets.xcassets */,
 				FBAD2E341E2BE417008207C0 /* Info.plist */,
 			);
 			path = FinalProject;
