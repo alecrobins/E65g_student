@@ -58,7 +58,8 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "ConfigurationsUpdate")
         nc.addObserver(forName: name, object: nil, queue: nil) {(n) in
-            print("hi")
+            self.configurationTableView.reloadData()
+            self.configurationTableView.setNeedsDisplay()
         }
     }
 
@@ -76,14 +77,14 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     //MARK: TableView DataSource and Delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return Configurations.sharedConfigurations.configurations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "basic"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         let label = cell.contentView.subviews.first as! UILabel
-        label.text = "Test"
+        label.text = Configurations.sharedConfigurations.configurations[indexPath.section]["title"] as? String
         
         return cell
     }
