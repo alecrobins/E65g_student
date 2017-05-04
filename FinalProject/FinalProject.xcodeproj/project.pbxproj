@@ -16,6 +16,9 @@
 		841C63881EB95BF6003C8910 /* Instrumentation ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C63821EB95BF6003C8910 /* Instrumentation ViewController.swift */; };
 		841C63891EB95BF6003C8910 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C63831EB95BF6003C8910 /* SimulationViewController.swift */; };
 		841C638A1EB95BF6003C8910 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C63841EB95BF6003C8910 /* StatisticsViewController.swift */; };
+		8466FF6D1EBAAD4E00A94E57 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466FF6C1EBAAD4E00A94E57 /* Fetcher.swift */; };
+		8466FF6F1EBAAE3F00A94E57 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466FF6E1EBAAE3F00A94E57 /* Configurations.swift */; };
+		8466FF711EBAC89300A94E57 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466FF701EBAC89300A94E57 /* ConfigurationViewController.swift */; };
 		FBAD2E271E2BE417008207C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAD2E261E2BE417008207C0 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,9 @@
 		841C63821EB95BF6003C8910 /* Instrumentation ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Instrumentation ViewController.swift"; sourceTree = "<group>"; };
 		841C63831EB95BF6003C8910 /* SimulationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
 		841C63841EB95BF6003C8910 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		8466FF6C1EBAAD4E00A94E57 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		8466FF6E1EBAAE3F00A94E57 /* Configurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
+		8466FF701EBAC89300A94E57 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		FBAD2E231E2BE417008207C0 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBAD2E261E2BE417008207C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBAD2E341E2BE417008207C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,9 +70,12 @@
 		FBAD2E251E2BE417008207C0 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				8466FF6E1EBAAE3F00A94E57 /* Configurations.swift */,
 				841C637F1EB95BF6003C8910 /* Engine.swift */,
+				8466FF6C1EBAAD4E00A94E57 /* Fetcher.swift */,
 				841C63801EB95BF6003C8910 /* Grid.swift */,
 				841C63811EB95BF6003C8910 /* GridView.swift */,
+				8466FF701EBAC89300A94E57 /* ConfigurationViewController.swift */,
 				841C63821EB95BF6003C8910 /* Instrumentation ViewController.swift */,
 				841C63831EB95BF6003C8910 /* SimulationViewController.swift */,
 				841C63841EB95BF6003C8910 /* StatisticsViewController.swift */,
@@ -153,9 +162,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				841C63851EB95BF6003C8910 /* Engine.swift in Sources */,
+				8466FF6D1EBAAD4E00A94E57 /* Fetcher.swift in Sources */,
 				FBAD2E271E2BE417008207C0 /* AppDelegate.swift in Sources */,
+				8466FF711EBAC89300A94E57 /* ConfigurationViewController.swift in Sources */,
 				841C63861EB95BF6003C8910 /* Grid.swift in Sources */,
 				841C63881EB95BF6003C8910 /* Instrumentation ViewController.swift in Sources */,
+				8466FF6F1EBAAE3F00A94E57 /* Configurations.swift in Sources */,
 				841C63891EB95BF6003C8910 /* SimulationViewController.swift in Sources */,
 				841C638A1EB95BF6003C8910 /* StatisticsViewController.swift in Sources */,
 				841C63871EB95BF6003C8910 /* GridView.swift in Sources */,

@@ -9,8 +9,8 @@
 import UIKit
 
 @available(iOS 10.0, *)
-class InstrumentationViewController: UIViewController {
-
+class InstrumentationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var rowsStepper: UIStepper!
     @IBOutlet weak var rowTextField: UITextField!
     
@@ -20,6 +20,8 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var refreshRateSlider: UISlider!
     
     @IBOutlet weak var timedRefreshSwitch: UISwitch!
+    
+    @IBOutlet weak var configurationTableView: UITableView!
     
     var timerInterval: TimeInterval = 0.0 {
         didSet {
@@ -38,6 +40,10 @@ class InstrumentationViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let rows = StandardEngine.sharedEngine.rows
@@ -48,6 +54,12 @@ class InstrumentationViewController: UIViewController {
         
         rowsStepper.value = Double(rows)
         colsStepper.value = Double(cols)
+        
+        let nc = NotificationCenter.default
+        let name = Notification.Name(rawValue: "ConfigurationsUpdate")
+        nc.addObserver(forName: name, object: nil, queue: nil) {(n) in
+            print("hi")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,6 +72,36 @@ class InstrumentationViewController: UIViewController {
             StandardEngine.sharedEngine.rows,
             StandardEngine.sharedEngine.cols
         )
+    }
+    
+    //MARK: TableView DataSource and Delegate
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifier = "basic"
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        let label = cell.contentView.subviews.first as! UILabel
+        label.text = "Test"
+        
+        return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indexPath = configurationTableView.indexPathForSelectedRow
+        if let indexPath = indexPath {
+            let testValue = "Test"
+//            let fruitValue = data[indexPath.section][indexPath.row]
+            if let vc = segue.destination as? ConfigurationViewController {
+                vc.testValue = testValue
+                vc.saveClosure = { newValue in
+                    print(newValue)
+//                    data[indexPath.section][indexPath.row] = newValue
+//                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     @IBAction func refreshRateSliderValueChange(_ sender: UISlider) {
