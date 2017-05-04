@@ -58,8 +58,9 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "ConfigurationsUpdate")
         nc.addObserver(forName: name, object: nil, queue: nil) {(n) in
-            self.configurationTableView.reloadData()
-            self.configurationTableView.setNeedsDisplay()
+            OperationQueue.main.addOperation {
+                self.configurationTableView.reloadData()
+            }
         }
     }
 
@@ -84,7 +85,7 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         let identifier = "basic"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         let label = cell.contentView.subviews.first as! UILabel
-        label.text = Configurations.sharedConfigurations.configurations[indexPath.section]["title"] as? String
+        label.text = Configurations.sharedConfigurations.configurations[indexPath.row]["title"] as? String
         
         return cell
     }
