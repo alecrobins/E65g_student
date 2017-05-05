@@ -8,13 +8,18 @@
 
 import UIKit
 
-class SimulationViewController: UIViewController, EngineDelegate {
+class SimulationViewController: UIViewController, EngineDelegate, GridViewDataSource {
 
     @IBOutlet weak var gridView: GridView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         StandardEngine.sharedEngine.delegate = self
+        gridView.gridDataSource = self
+        gridView.gridSize = GridSize(
+            StandardEngine.sharedEngine.rows,
+            StandardEngine.sharedEngine.cols
+        )
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,9 +28,19 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBAction func step(_ sender: UIButton) {
         StandardEngine.sharedEngine.next()
+        gridView.setNeedsDisplay()
+    }
+    
+    public subscript (row: Int, col: Int) -> CellState {
+        get { return StandardEngine.sharedEngine.grid[row,col] }
+        set { StandardEngine.sharedEngine.grid[row,col] = newValue }
     }
     
     func engineDidUpdate(withGrid: GridProtocol) {
+        gridView.gridSize = GridSize(
+            StandardEngine.sharedEngine.rows,
+            StandardEngine.sharedEngine.cols
+        )
         gridView.setNeedsDisplay()
     }
 }

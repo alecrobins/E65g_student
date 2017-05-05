@@ -28,23 +28,20 @@ public class StandardEngine: EngineProtocol {
     static let sharedEngine = StandardEngine(10, 10)
     
     public var delegate: EngineDelegate?
-    public var grid: GridProtocol {
-        didSet {
-            sendUpdate()
-        }
-    }
+    public var grid: GridProtocol
+    
     public var refreshRate: Double = 0.0
     public var refreshTimer: Timer?
     public var rows: Int
     public var cols: Int
     
-    private init(_ rows: Int, _ cols: Int) {
+    public init(_ rows: Int, _ cols: Int) {
         self.grid = Grid(rows, cols)
         self.rows = rows
         self.cols = cols
     }
     
-    private func sendUpdate() {
+    public func sendUpdate() {
         delegate?.engineDidUpdate(withGrid: grid)
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "EngineUpdate")

@@ -8,6 +8,11 @@
 
 import UIKit
 
+public protocol GridViewDataSource {
+    subscript (row: Int, col: Int) -> CellState { get set }
+}
+
+
 @IBDesignable class GridView: UIView {
 
     @IBInspectable var livingColor = UIColor.green
@@ -17,15 +22,18 @@ import UIKit
     @IBInspectable var gridColor = UIColor.black
     @IBInspectable var gridWidth: CGFloat = 2.0
     
-    // Updated since class
     private var lastTouchedPosition: GridPosition?
+    
+    public var gridDataSource: GridViewDataSource?
+    public var gridSize: GridSize?
     
     override func draw(_ rect: CGRect) {
         drawRectangle(rect)
     }
     
     func drawRectangle(_ rect: CGRect) {
-        let rectSize = StandardEngine.sharedEngine.grid.size
+        guard let rectSize = gridSize else { return }
+        guard let grid = gridDataSource else { return }
         
         let size = CGSize(
             width: rect.size.width / CGFloat(rectSize.rows),
@@ -48,7 +56,7 @@ import UIKit
                 
                 var fillColor: UIColor
                 
-                switch StandardEngine.sharedEngine.grid[(i, j)] {
+                switch grid[(i, j)] {
                 case .alive: fillColor = self.livingColor
                 case .born: fillColor = self.bornColor
                 case .died: fillColor = self.diedColor
@@ -120,21 +128,27 @@ import UIKit
             || lastTouchedPosition?.col != pos.col
             else { return pos }
         
-        let cellValue = StandardEngine.sharedEngine.grid[(pos.row, pos.col)]
-        StandardEngine.sharedEngine.grid[(pos.row, pos.col)] = cellValue.toggle(value: cellValue)
+        if (gridDataSource != nil) {
+            let cellValue = gridDataSource![(pos.row, pos.col)]
+            gridDataSource![(pos.row, pos.col)] = cellValue.toggle(value: cellValue)
+            setNeedsDisplay()
+        }
         
-        setNeedsDisplay()
+        
+        
         return pos
     }
     
     func convert(touch: UITouch) -> GridPosition {
+        guard let rectSize = gridSize else { return (0, 0) }
+        
         let touchX = touch.location(in: self).x
         let gridWidth = frame.size.width
-        let row = touchX / gridWidth * CGFloat(StandardEngine.sharedEngine.grid.size.rows)
+        let row = touchX / gridWidth * CGFloat(rectSize.rows)
         
         let touchY = touch.location(in: self).y
         let gridHeight = frame.size.height
-        let col = touchY / gridHeight * CGFloat(StandardEngine.sharedEngine.grid.size.cols)
+        let col = touchY / gridHeight * CGFloat(rectSize.cols)
         
         return GridPosition(row: Int(row), col: Int(col))
     }

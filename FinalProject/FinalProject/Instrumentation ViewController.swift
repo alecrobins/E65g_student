@@ -33,7 +33,8 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
                 repeats: true
             ) { (t: Timer) in
                 if (self.timedRefreshSwitch.isOn) {
-                    StandardEngine.sharedEngine.next()    
+                    StandardEngine.sharedEngine.next()
+                    StandardEngine.sharedEngine.sendUpdate()
                 }
             }
             
@@ -74,6 +75,7 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
             StandardEngine.sharedEngine.rows,
             StandardEngine.sharedEngine.cols
         )
+        StandardEngine.sharedEngine.sendUpdate()
     }
     
     //MARK: TableView DataSource and Delegate
