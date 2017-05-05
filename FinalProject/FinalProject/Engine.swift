@@ -41,6 +41,13 @@ public class StandardEngine: EngineProtocol {
         self.cols = cols
     }
     
+    public func updateGrid(_ updatedGrid: GridProtocol) {
+        self.rows = updatedGrid.size.rows
+        self.cols = updatedGrid.size.cols
+        self.grid = updatedGrid
+        sendUpdate()
+    }
+    
     public func sendUpdate() {
         delegate?.engineDidUpdate(withGrid: grid)
         let nc = NotificationCenter.default

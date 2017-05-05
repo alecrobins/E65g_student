@@ -40,8 +40,11 @@ class ConfigurationViewController: UIViewController, GridViewDataSource {
             let newValue = configurationTextView.text! as String
             let updatedContents = Configurations.gridToContents(self.grid!)
             let updatedConfiguration = NSMutableDictionary()
+            
             updatedConfiguration["title"] = newValue
             updatedConfiguration["contents"] = updatedContents
+            
+            StandardEngine.sharedEngine.updateGrid(grid!)
             
             saveClosure(updatedConfiguration as NSDictionary)
             self.navigationController?.popViewController(animated: true)

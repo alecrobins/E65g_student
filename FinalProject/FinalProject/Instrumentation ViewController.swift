@@ -100,7 +100,21 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
                 vc.configuration = configuration
                 vc.saveClosure = { newValue in
                     Configurations.sharedConfigurations.configurations[indexPath.row] = newValue
+                    
+                    let updatedRows = StandardEngine.sharedEngine.rows
+                    let updatedCols = StandardEngine.sharedEngine.cols
+                    
+                    self.rowsStepper.value = Double(updatedRows)
+                    self.colsStepper.value = Double(updatedCols)
+                    
+                    self.rowTextField.text = String(updatedRows)
+                    self.colsTextField.text = String(updatedCols)
+                    
                     self.configurationTableView.reloadData()
+                    self.rowsStepper.setNeedsDisplay()
+                    self.colsStepper.setNeedsDisplay()
+                    self.rowTextField.setNeedsDisplay()
+                    self.colsTextField.setNeedsDisplay()
                 }
             }
         }
