@@ -92,11 +92,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hhb-Jd-g9R" id="sZJ-hh-4OH">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oep-H4-jCg">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -151,6 +151,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Waning Gibbous" selectedImage="Waning Gibbous" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" id="Gb5-3w-zAU"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="colsStepper" destination="B5z-IY-izc" id="Hvq-xN-8Ur"/>
                         <outlet property="colsTextField" destination="kmJ-5H-GPv" id="xDL-dn-P0Y"/>
@@ -221,6 +222,10 @@
                             <constraint firstItem="n21-d6-3VB" firstAttribute="centerX" secondItem="N1j-Mf-emZ" secondAttribute="centerX" id="hyK-HE-Dit"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="KcG-KA-Nso">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="maq-Yg-2XG"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="configurationGridView" destination="n21-d6-3VB" id="iVR-af-xT6"/>
                         <outlet property="configurationTextView" destination="01W-ES-AUV" id="S5h-WL-FFZ"/>
@@ -233,7 +238,7 @@
         <!--Item-->
         <scene sceneID="V8z-Ml-Ybe">
             <objects>
-                <navigationController navigationBarHidden="YES" id="XyF-Ew-epS" sceneMemberID="viewController">
+                <navigationController id="XyF-Ew-epS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="G5P-fY-ERf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cKm-k8-Djv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
