@@ -95,14 +95,12 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = configurationTableView.indexPathForSelectedRow
         if let indexPath = indexPath {
-            let testValue = "Test"
-//            let fruitValue = data[indexPath.section][indexPath.row]
+            let configuration = Configurations.sharedConfigurations.configurations[indexPath.row]
             if let vc = segue.destination as? ConfigurationViewController {
-                vc.testValue = testValue
+                vc.configuration = configuration
                 vc.saveClosure = { newValue in
-                    print(newValue)
-//                    data[indexPath.section][indexPath.row] = newValue
-//                    self.tableView.reloadData()
+                    Configurations.sharedConfigurations.configurations[indexPath.row] = newValue
+                    self.configurationTableView.reloadData()
                 }
             }
         }

@@ -13,6 +13,28 @@ let finalProjectURL = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
 public class Configurations {
     static let sharedConfigurations = Configurations()
     
+    static func contentsToGrid(_ contents: [[Int]]) -> Grid {
+        var maxSize: Int = 0
+        contents.forEach {gridPosition in
+            let row = gridPosition[0]
+            let col = gridPosition[1]
+            if max(row, col) > maxSize {
+                maxSize = max(row, col)
+            }
+        }
+        
+        maxSize = maxSize * 2
+        
+        var grid = Grid(maxSize, maxSize)
+        contents.forEach {gridPosition in
+            let row = gridPosition[0]
+            let col = gridPosition[1]
+            grid[row, col] = .alive
+        }
+        
+        return grid
+    }
+    
     public var configurations = [NSDictionary]()
     
     private init() {}

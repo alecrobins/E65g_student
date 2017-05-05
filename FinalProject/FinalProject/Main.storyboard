@@ -92,11 +92,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hhb-Jd-g9R" id="sZJ-hh-4OH">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oep-H4-jCg">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -201,21 +201,34 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="01W-ES-AUV">
+                                <rect key="frame" x="37" y="146" width="301" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.73419148489932884" green="0.73542365771812079" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="01W-ES-AUV" firstAttribute="leading" secondItem="n21-d6-3VB" secondAttribute="leading" id="7YX-OP-Svg"/>
                             <constraint firstItem="n21-d6-3VB" firstAttribute="height" secondItem="N1j-Mf-emZ" secondAttribute="height" multiplier="0.6" priority="500" constant="0.5" id="9x6-W9-9Rn"/>
                             <constraint firstItem="n21-d6-3VB" firstAttribute="height" relation="lessThanOrEqual" secondItem="N1j-Mf-emZ" secondAttribute="height" multiplier="0.6" priority="500" constant="0.5" id="Mr3-6L-ur7"/>
+                            <constraint firstItem="n21-d6-3VB" firstAttribute="top" secondItem="01W-ES-AUV" secondAttribute="bottom" constant="8" id="PCb-jv-uEf"/>
                             <constraint firstItem="n21-d6-3VB" firstAttribute="width" secondItem="N1j-Mf-emZ" secondAttribute="width" multiplier="0.8" priority="500" constant="0.5" id="Vii-4L-O8S"/>
                             <constraint firstItem="n21-d6-3VB" firstAttribute="centerY" secondItem="N1j-Mf-emZ" secondAttribute="centerY" id="YO4-Cj-Zbw"/>
                             <constraint firstItem="n21-d6-3VB" firstAttribute="width" relation="lessThanOrEqual" secondItem="N1j-Mf-emZ" secondAttribute="width" multiplier="0.8" priority="500" constant="0.5" id="fAT-oh-zSD"/>
+                            <constraint firstItem="01W-ES-AUV" firstAttribute="trailing" secondItem="n21-d6-3VB" secondAttribute="trailing" id="fw5-pK-0tE"/>
                             <constraint firstItem="n21-d6-3VB" firstAttribute="centerX" secondItem="N1j-Mf-emZ" secondAttribute="centerX" id="hyK-HE-Dit"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="configurationGridView" destination="n21-d6-3VB" id="iVR-af-xT6"/>
+                        <outlet property="configurationTextView" destination="01W-ES-AUV" id="S5h-WL-FFZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKm-l9-Dof" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2718" y="-331"/>
+            <point key="canvasLocation" x="2717.5999999999999" y="-331.48425787106447"/>
         </scene>
         <!--Item-->
         <scene sceneID="V8z-Ml-Ybe">

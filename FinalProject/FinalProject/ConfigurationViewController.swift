@@ -8,33 +8,36 @@
 
 import UIKit
 
-class ConfigurationViewController: UIViewController {
-    var testValue: String?
-    var saveClosure: ((String) -> Void)?
+class ConfigurationViewController: UIViewController, GridViewDataSource {
+    
+    @IBOutlet weak var configurationTextView: UITextField!
+    @IBOutlet weak var configurationGridView: GridView!
+    
+    var grid: Grid?
+    var configuration: NSDictionary?
+    var saveClosure: ((NSDictionary) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
-        if let testValue = testValue {
-            print(testValue)
+        configurationGridView.gridDataSource = self
+        
+        if self.configuration != nil {
+            configurationTextView.text = configuration!["title"] as? String
+            let configurationContents = configuration!["contents"] as! [[Int]]
+            self.grid = Configurations.contentsToGrid(configurationContents)
+            configurationGridView.gridSize = self.grid!.size
         }
-        // Do any additional setup after loading the view.
+    }
+    
+    public subscript (row: Int, col: Int) -> CellState {
+        get { return self.grid![row,col] }
+        set { self.grid?[row,col] = newValue }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
