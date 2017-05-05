@@ -34,6 +34,19 @@ class ConfigurationViewController: UIViewController, GridViewDataSource {
         get { return self.grid![row,col] }
         set { self.grid?[row,col] = newValue }
     }
+    
+    @IBAction func onSave(_ sender: Any) {
+        if let saveClosure = saveClosure {
+            let newValue = configurationTextView.text! as String
+            let updatedContents = Configurations.gridToContents(self.grid!)
+            let updatedConfiguration = NSMutableDictionary()
+            updatedConfiguration["title"] = newValue
+            updatedConfiguration["contents"] = updatedContents
+            
+            saveClosure(updatedConfiguration as NSDictionary)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

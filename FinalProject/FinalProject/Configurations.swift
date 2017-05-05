@@ -35,6 +35,24 @@ public class Configurations {
         return grid
     }
     
+    static func gridToContents(_ grid: Grid) -> [[Int]] {
+        var contents = [[Int]]()
+        
+        let gridSize = grid.size
+        (0 ..< gridSize.rows)
+        .forEach {row in
+            (0 ..< gridSize.cols)
+            .forEach { col in
+                let gridCell = grid[row, col]
+                if (gridCell.isAlive) {
+                    contents.append([row, col])
+                }
+            }
+        }
+        
+        return contents
+    }
+    
     public var configurations = [NSDictionary]()
     
     private init() {}

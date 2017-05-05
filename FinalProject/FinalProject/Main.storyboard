@@ -223,7 +223,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KcG-KA-Nso">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="maq-Yg-2XG"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="maq-Yg-2XG">
+                            <connections>
+                                <action selector="onSave:" destination="aXt-A4-Q4U" id="DEf-4A-wit"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
