@@ -32,7 +32,7 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDataSo
     }
     
     @IBAction func onReset(_ sender: Any) {
-        
+        StandardEngine.sharedEngine.reset()
     }
     
     @IBAction func onSave(_ sender: Any) {

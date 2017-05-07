@@ -57,10 +57,23 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         colsStepper.value = Double(cols)
         
         let nc = NotificationCenter.default
-        let name = Notification.Name(rawValue: "ConfigurationsUpdate")
-        nc.addObserver(forName: name, object: nil, queue: nil) {(n) in
+        
+        let configurationUpdate = Notification.Name(rawValue: "ConfigurationsUpdate")
+        nc.addObserver(forName: configurationUpdate, object: nil, queue: nil) {(n) in
             OperationQueue.main.addOperation {
                 self.configurationTableView.reloadData()
+            }
+        }
+        
+        let engineUpdate = Notification.Name(rawValue: "EngineUpdate")
+        nc.addObserver(forName: engineUpdate, object: nil, queue: nil) {(n) in
+            OperationQueue.main.addOperation {
+                let updatedRows = StandardEngine.sharedEngine.rows
+                let updatedCols = StandardEngine.sharedEngine.rows
+                self.rowTextField.text = String(updatedRows)
+                self.colsTextField.text = String(updatedCols)
+                self.rowsStepper.value = Double(updatedRows)
+                self.colsStepper.value = Double(updatedRows)
             }
         }
     }

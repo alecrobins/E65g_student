@@ -41,6 +41,10 @@ public class StandardEngine: EngineProtocol {
         self.cols = cols
     }
     
+    public func reset() {
+        updateGrid(Grid(10, 10))
+    }
+    
     public func updateGrid(_ updatedGrid: GridProtocol) {
         self.rows = updatedGrid.size.rows
         self.cols = updatedGrid.size.cols
