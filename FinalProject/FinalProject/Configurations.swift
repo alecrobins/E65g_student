@@ -59,7 +59,6 @@ public class Configurations {
     
     public func addConfiguration(_ newConfiguration: NSDictionary) {
         configurations.append(newConfiguration)
-//        configurations += newConfigurations
         sendUpdate()
     }
     

@@ -15,9 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Configurations.sharedConfigurations.initialfetchConfigurations()
-//        let defaults = UserDefaults.standard
-//        defaults.set(configuration, forKey: "simulationConfiguration")
-//        let recoveredStrings = defaults.object(forKey: "simulationConfiguration")
+        let defaults = UserDefaults.standard
+        
+        if let lastSavedConfiguration = defaults.object(forKey: "lastSavedConfiguration") as? NSDictionary {
+            Configurations.sharedConfigurations.addConfiguration(lastSavedConfiguration)
+            let grid = Configurations.contentsToGrid(lastSavedConfiguration["contents"] as! [[Int]])
+            StandardEngine.sharedEngine.updateGrid(grid)
+        }
+        
         return true
     }
 

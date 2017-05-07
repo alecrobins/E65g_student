@@ -36,7 +36,7 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDataSo
     }
     
     @IBAction func onSave(_ sender: Any) {
-        let alert = UIAlertController(title: "What do you want to save this grid as?", message: "TestMessage", preferredStyle: .alert)
+        let alert = UIAlertController(title: "What do you want to save this grid as?", message: "Enter name:", preferredStyle: .alert)
         
         let saveAlertAction = UIAlertAction(title: "Save", style: .default) {_ in
             let gridNameTextField = alert.textFields![0] as UITextField
@@ -48,10 +48,14 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDataSo
             configuration["contents"] = contents
             
             Configurations.sharedConfigurations.addConfiguration(configuration as NSDictionary)
+            
+            let defaults = UserDefaults.standard
+            defaults.set(configuration, forKey: "lastSavedConfiguration")
         }
         
         alert.addTextField(configurationHandler: nil)
         alert.addAction(saveAlertAction)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil));
         
         self.present(alert, animated: true, completion: nil)
     }

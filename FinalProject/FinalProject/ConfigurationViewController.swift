@@ -50,6 +50,9 @@ class ConfigurationViewController: UIViewController, GridViewDataSource {
             
             StandardEngine.sharedEngine.updateGrid(grid!)
             
+            let defaults = UserDefaults.standard
+            defaults.set(updatedConfiguration, forKey: "lastSavedConfiguration")
+            
             saveClosure(updatedConfiguration as NSDictionary)
             self.navigationController!.popViewController(animated: true)
         }
