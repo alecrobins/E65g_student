@@ -69,11 +69,11 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         nc.addObserver(forName: engineUpdate, object: nil, queue: nil) {(n) in
             OperationQueue.main.addOperation {
                 let updatedRows = StandardEngine.sharedEngine.rows
-                let updatedCols = StandardEngine.sharedEngine.rows
+                let updatedCols = StandardEngine.sharedEngine.cols
                 self.rowTextField.text = String(updatedRows)
                 self.colsTextField.text = String(updatedCols)
                 self.rowsStepper.value = Double(updatedRows)
-                self.colsStepper.value = Double(updatedRows)
+                self.colsStepper.value = Double(updatedCols)
             }
         }
     }
@@ -148,8 +148,8 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         colsTextField.text = String(StandardEngine.sharedEngine.cols)
         updateStandardEngineGrid()
     }
-
-    @IBAction func rowsTextFieldDidEnd(_ sender: UITextField) {
+    
+    func rowsTextFieldIsDone(_ sender: UITextField) {
         if let updatedValue = Int(sender.text!) {
             StandardEngine.sharedEngine.rows = updatedValue
             rowsStepper.value = Double(updatedValue)
@@ -157,10 +157,10 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         } else {
             rowTextField.text = String(StandardEngine.sharedEngine.rows)
         }
+        sender.resignFirstResponder()
     }
     
-    
-    @IBAction func colsTextFieldDidEnd(_ sender: UITextField) {
+    func colsTextFieldIsDone(_ sender: UITextField) {
         if let updatedValue = Int(sender.text!) {
             StandardEngine.sharedEngine.cols = updatedValue
             colsStepper.value = Double(updatedValue)
@@ -168,6 +168,27 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         } else {
             rowTextField.text = String(StandardEngine.sharedEngine.cols)
         }
+        sender.resignFirstResponder()
     }
+    
+    @IBAction func rowsTextFieldDone(_ sender: UITextField) {
+        rowsTextFieldIsDone(sender);
+    }
+    
+
+    @IBAction func rowsTextFieldDidEnd(_ sender: UITextField) {
+        rowsTextFieldIsDone(sender);
+    }
+    
+    
+    @IBAction func colsTextFieldDidEnd(_ sender: UITextField) {
+        colsTextFieldIsDone(sender)
+        
+    }
+    
+    @IBAction func colsTextFieldDone(_ sender: UITextField) {
+        colsTextFieldIsDone(sender)
+    }
+    
 }
 

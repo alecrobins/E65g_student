@@ -27,9 +27,10 @@
                                 <rect key="frame" x="65" y="28" width="192" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                 <connections>
                                     <action selector="rowsTextFieldDidEnd:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="OqE-yR-lcx"/>
+                                    <action selector="rowsTextFieldDone:" destination="9pv-A4-QxB" eventType="primaryActionTriggered" id="mRN-n5-HIP"/>
                                 </connections>
                             </textField>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-UU-ICO">
@@ -42,9 +43,10 @@
                                 <rect key="frame" x="92" y="66" width="165" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                 <connections>
                                     <action selector="colsTextFieldDidEnd:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="oBH-xq-tGv"/>
+                                    <action selector="colsTextFieldDone:" destination="9pv-A4-QxB" eventType="primaryActionTriggered" id="nvz-Z9-Zl6"/>
                                 </connections>
                             </textField>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="B5z-IY-izc">
