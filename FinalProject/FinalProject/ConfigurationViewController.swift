@@ -35,6 +35,10 @@ class ConfigurationViewController: UIViewController, GridViewDataSource {
         set { self.grid?[row,col] = newValue }
     }
     
+    @IBAction func onCancel(_ sender: Any) {
+        self.navigationController!.popViewController(animated: true)
+    }
+    
     @IBAction func onSave(_ sender: Any) {
         if let saveClosure = saveClosure {
             let newValue = configurationTextView.text! as String
@@ -47,7 +51,7 @@ class ConfigurationViewController: UIViewController, GridViewDataSource {
             StandardEngine.sharedEngine.updateGrid(grid!)
             
             saveClosure(updatedConfiguration as NSDictionary)
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController!.popViewController(animated: true)
         }
     }
 

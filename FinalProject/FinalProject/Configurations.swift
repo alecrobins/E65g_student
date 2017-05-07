@@ -57,8 +57,9 @@ public class Configurations {
     
     private init() {}
     
-    public func addConfiguratoins(_ newConfigurations: [NSDictionary]) {
-        configurations += newConfigurations
+    public func addConfiguration(_ newConfiguration: NSDictionary) {
+        configurations.append(newConfiguration)
+//        configurations += newConfigurations
         sendUpdate()
     }
     
@@ -83,16 +84,7 @@ public class Configurations {
             
             let newConfigurations = json as! [NSDictionary]
             self.configurations += newConfigurations
-            self.sendUpdate()
-            
-//            let jsonDictionary = jsonArray[0] as! NSDictionary
-//            let jsonTitle = jsonDictionary["title"] as! String
-//            let jsonContents = jsonDictionary["contents"] as! [[Int]]
-//            print (jsonTitle, jsonContents)
-//            OperationQueue.main.addOperation {
-//                self.textView.text = resultString
-//            }
-        }
+            self.sendUpdate()        }
     }
 }
 
