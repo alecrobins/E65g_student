@@ -83,7 +83,8 @@ public class Configurations {
             
             let newConfigurations = json as! [NSDictionary]
             self.configurations += newConfigurations
-            self.sendUpdate()        }
+            self.sendUpdate()
+        }
     }
 }
 

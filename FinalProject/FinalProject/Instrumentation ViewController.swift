@@ -161,24 +161,28 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func rowsTextFieldIsDone(_ sender: UITextField) {
-        if let updatedValue = Int(sender.text!) {
-            StandardEngine.sharedEngine.rows = updatedValue
-            rowsStepper.value = Double(updatedValue)
-            updateStandardEngineGrid()
-        } else {
+        guard let updatedValue = Int(sender.text!), updatedValue >= 0 else {
             rowTextField.text = String(StandardEngine.sharedEngine.rows)
+            sender.resignFirstResponder()
+            return
         }
+        
+        StandardEngine.sharedEngine.rows = updatedValue
+        rowsStepper.value = Double(updatedValue)
+        updateStandardEngineGrid()
         sender.resignFirstResponder()
     }
     
     func colsTextFieldIsDone(_ sender: UITextField) {
-        if let updatedValue = Int(sender.text!) {
-            StandardEngine.sharedEngine.cols = updatedValue
-            colsStepper.value = Double(updatedValue)
-            updateStandardEngineGrid()
-        } else {
+        guard let updatedValue = Int(sender.text!), updatedValue >= 0 else {
             rowTextField.text = String(StandardEngine.sharedEngine.cols)
+            sender.resignFirstResponder()
+            return
         }
+        
+        StandardEngine.sharedEngine.cols = updatedValue
+        colsStepper.value = Double(updatedValue)
+        updateStandardEngineGrid()
         sender.resignFirstResponder()
     }
     
