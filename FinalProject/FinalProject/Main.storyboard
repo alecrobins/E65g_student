@@ -125,6 +125,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugV-4u-7rZ">
+                                <rect key="frame" x="298" y="171" width="61" height="30"/>
+                                <state key="normal" title="Add Row"/>
+                                <connections>
+                                    <action selector="onAddRow:" destination="9pv-A4-QxB" eventType="touchUpInside" id="82c-Ak-RwY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470588235294" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -133,6 +140,7 @@
                             <constraint firstItem="HRV-wZ-MAJ" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" id="2LV-IF-FVz"/>
                             <constraint firstItem="alO-66-7V8" firstAttribute="centerY" secondItem="kmJ-5H-GPv" secondAttribute="centerY" id="2Wa-PI-f66"/>
                             <constraint firstItem="iw9-lq-ZDr" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="4HM-7m-yjD"/>
+                            <constraint firstItem="pHE-nt-zEL" firstAttribute="top" secondItem="ugV-4u-7rZ" secondAttribute="bottom" constant="4" id="78S-lG-U8W"/>
                             <constraint firstItem="kmJ-5H-GPv" firstAttribute="leading" secondItem="alO-66-7V8" secondAttribute="trailing" constant="8" id="79f-Bn-EKb"/>
                             <constraint firstItem="jIP-o2-igd" firstAttribute="leading" secondItem="iw9-lq-ZDr" secondAttribute="trailing" constant="16" id="7g8-Pb-F3Q"/>
                             <constraint firstItem="kmJ-5H-GPv" firstAttribute="top" secondItem="HRV-wZ-MAJ" secondAttribute="bottom" constant="8" id="Con-WH-LZe"/>
@@ -157,6 +165,7 @@
                             <constraint firstItem="Cjl-UU-ICO" firstAttribute="leading" secondItem="HRV-wZ-MAJ" secondAttribute="trailing" constant="8" id="reX-oN-xok"/>
                             <constraint firstItem="tR3-6l-k4J" firstAttribute="top" secondItem="iw9-lq-ZDr" secondAttribute="bottom" constant="17" id="s8P-fv-9y9"/>
                             <constraint firstItem="dr8-Db-Hxh" firstAttribute="centerX" secondItem="jIP-o2-igd" secondAttribute="centerX" id="sm2-PX-DVs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ugV-4u-7rZ" secondAttribute="trailing" id="zaB-Kn-uCV"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Waning Gibbous" selectedImage="Waning Gibbous" id="acW-dT-cKf"/>

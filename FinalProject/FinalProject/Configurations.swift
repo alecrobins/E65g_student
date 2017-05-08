@@ -14,7 +14,7 @@ public class Configurations {
     static let sharedConfigurations = Configurations()
     
     static func contentsToGrid(_ contents: [[Int]]) -> Grid {
-        var maxSize: Int = 0
+        var maxSize: Int = 5
         contents.forEach {gridPosition in
             let row = gridPosition[0]
             let col = gridPosition[1]

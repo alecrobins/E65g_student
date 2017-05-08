@@ -105,6 +105,17 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         return cell
     }
     
+    @IBAction func onAddRow(_ sender: Any) {
+        let blankContents = [[Int]]()
+        let blankConfiguration = NSMutableDictionary()
+        
+        blankConfiguration["title"] = "New Row"
+        blankConfiguration["contents"] = blankContents
+        
+        Configurations.sharedConfigurations.addConfiguration(blankConfiguration as NSDictionary)
+        configurationTableView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = configurationTableView.indexPathForSelectedRow
         if let indexPath = indexPath {
